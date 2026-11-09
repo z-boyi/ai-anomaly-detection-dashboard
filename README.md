@@ -96,8 +96,37 @@ The dashboard is designed for **exploration, monitoring, and communication**, no
 └── src
     ├── 01_download_btc.py
     ├── 02_build_features.py
-    └── 03_anomaly_detection.py
+    ├── 03_anomaly_detection.py
+    └── 04_validate_events.py
 ```
+
+### How to Run
+```bash
+pip install -r requirements.txt
+python src/01_download_btc.py
+python src/02_build_features.py
+python src/03_anomaly_detection.py
+python src/04_validate_events.py
+```
+
+---
+
+## Validation Against Known Market Events
+There are no ground-truth labels for "anomalous" days, so the model is sanity-checked against well-known BTC market shocks. An event counts as detected if at least one anomaly is flagged within ±3 days (`src/04_validate_events.py`).
+
+| Event | Date | Detected | Severity | Top Driver |
+|---|---|---|---|---|
+| Early-2015 crash | 2015-01-14 | ✅ | High | log_return |
+| 2017 bubble peak | 2017-12-17 | ✅ | Low | volatility_14 |
+| Nov 2018 sell-off | 2018-11-20 | ✅ | Medium | log_return |
+| COVID-19 crash | 2020-03-12 | ✅ | High | log_return |
+| China mining crackdown | 2021-05-19 | ✅ | High | log_return |
+| Terra/LUNA collapse | 2022-05-09 | ✅ | Medium | log_return |
+| Celsius / 3AC contagion | 2022-06-13 | ✅ | High | log_return |
+| FTX collapse | 2022-11-08 | ✅ | Medium | log_return |
+| Aug 2024 global sell-off | 2024-08-05 | ❌ | – | – |
+
+**Result: 8/9 events detected.** For reference, with a 3% anomaly rate a random flagger would hit a given 7-day window only ~19% of the time (1 − 0.97⁷).
 
 ---
 
