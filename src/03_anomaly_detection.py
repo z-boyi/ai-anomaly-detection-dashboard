@@ -60,8 +60,10 @@ df["severity"] = np.where(
     "Normal"
 )
 
-# find strongest driver per row
-abs_features = X.abs()
+# Find strongest driver per row.
+# Use standardized features so drivers are comparable across different scales
+# (raw values would bias the choice toward large-magnitude features like ret_z_7).
+abs_features = pd.DataFrame(np.abs(X_scaled), columns=feature_cols, index=X.index)
 df["top_driver"] = abs_features.idxmax(axis=1)
 df["driver_value"] = abs_features.max(axis=1)
 
