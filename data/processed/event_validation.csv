@@ -1,0 +1,10 @@
+event_date,event,detected,flag_date,severity,top_driver
+2015-01-14,Early-2015 crash (Bitstamp hack period),True,2015-01-14,High,log_return
+2017-12-17,2017 bubble peak,True,2017-12-16,Low,volatility_14
+2018-11-20,Nov 2018 sell-off (BCH hard fork),True,2018-11-19,Medium,log_return
+2020-03-12,COVID-19 'Black Thursday' crash,True,2020-03-12,High,log_return
+2021-05-19,May 2021 China mining crackdown crash,True,2021-05-19,High,log_return
+2022-05-09,Terra/LUNA collapse,True,2022-05-09,Medium,log_return
+2022-06-13,Celsius freeze / 3AC contagion,True,2022-06-13,High,log_return
+2022-11-08,FTX collapse,True,2022-11-09,Medium,log_return
+2024-08-05,Aug 2024 global market sell-off (yen carry unwind),False,,,
