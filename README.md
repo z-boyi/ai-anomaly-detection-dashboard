@@ -142,7 +142,14 @@ There are no ground-truth labels for "anomalous" days, so the model is sanity-ch
 - Unsupervised learning can effectively monitor volatile systems without labeled data
 - Feature engineering is critical for meaningful anomaly detection
 - Dashboards are essential for translating model output into actionable insight
-- Finance-leaning data can be framed for **general data, tech, and fintech roles**
+- Explainability needs care: driver attribution must use standardized features, otherwise large-scale features dominate
+
+---
+
+## Limitations & Next Steps
+- **Retrospective, not real-time:** the scaler and Isolation Forest are fit on the full history, so each day is scored with knowledge of later data. A true early-warning setup would refit on an expanding window and score only the next day (walk-forward).
+- **Fixed contamination (3%):** the anomaly rate is a chosen parameter, not learned from data.
+- **Single asset:** extending to multiple assets or on-chain metrics would test generalization.
 
 ---
 
